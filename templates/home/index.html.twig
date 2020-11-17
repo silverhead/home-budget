@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block body %}
+
+<div class="row valign-wrapper">
+    <div class="col s12">
+        <h1>Tableau de bord</h1>
+    </div>
+</div>
+    <div class="row">
+        <div class="col s12 m1 offset-m1">
+            <div class="card center-align">
+                <a href="{{ path('account_index') }}">
+                    <i class="large material-icons">account_balance</i>
+                    <br>
+                    <span>Comptes</span>
+                </a>
+            </div>
+        </div>
+        <div class="col s12 m1 offset-m1">
+            <div class="card center-align">
+                <i class="large material-icons">list</i>
+                <br>
+                <span>Catégories</span>
+            </div>
+        </div>
+        <div class="col s12 m1 offset-m1">
+            <div class="card center-align">
+                <i class="large material-icons">stars</i>
+                <br>
+                <span>Projets</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}

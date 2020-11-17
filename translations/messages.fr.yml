@@ -1,0 +1,27 @@
+app:
+    common:
+        list:
+            action: "Action"
+        add_button: "Ajouter"
+        return_button: "Retour"
+header:
+    brand: "HB HomeBudget"
+account:
+    list:
+        title: "Liste des comptes"
+        label: "Libellé"
+    edit:
+        title: "Edition d'un compte"
+entry:
+    list:
+        title: "Liste des opérations"
+        label: "Libellé"
+        debit: "Débit"
+        credit: "Crédit"
+        title_category: "Catégories"
+category:
+    list:
+        title: "Liste des catégories"
+        label: "Libellé"
+        tags: "Liste des tags"
+
