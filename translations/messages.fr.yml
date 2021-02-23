@@ -2,26 +2,71 @@ app:
     common:
         list:
             action: "Action"
+            no_data: "Pas de données"
         add_button: "Ajouter"
+        edit_button: "Modifier"
+        save_button: "Enregistrer"
+        cancel_button: "Annuler"
         return_button: "Retour"
 header:
     brand: "HB HomeBudget"
+menu:
+    home: "Accueil"
+    accounts: "Comptes"
+    categories: "Categories"
+home:
+    title: "Tableau de bord"
+dashboard:
+    cards:
+        account:
+            total_revenue_title: "Total revenue"
+            accounts_title: "Comptes"
+        category:
+            categories_title: "Catégories"
 account:
     list:
         title: "Liste des comptes"
         label: "Libellé"
+        soldInit: "Solde initial"
+        seeTheEntries: "Voir les opérations de ce compte"
     edit:
         title: "Edition d'un compte"
+    new:
+        title: "Nouveau compte"
 entry:
     list:
         title: "Liste des opérations"
+        periodTitle: "Période du %dateStar% - %dateEnd%"
+        totalCreditOfPeriod: "Total crédit période : "
+        totalDebitOfPeriod: "Total débit période : "
+        totalDiffPeriod: "Total différence période : "
+        soldEndOfPeriod: "Solde restant fin de période"
         label: "Libellé"
         debit: "Débit"
         credit: "Crédit"
+        date: "Date"
+        noData: "Pas d'opérations pour ce compte"
         title_category: "Catégories"
+        filter_button: "Filtrer"
+    import_button: "Importer"
+
 category:
     list:
         title: "Liste des catégories"
         label: "Libellé"
+        account: "Compte"
         tags: "Liste des tags"
-
+    add:
+        title: "Ajouter une catégorie"
+    edit:
+        title: "Edition de la catégorie "
+    form:
+        label:
+            label: "Libellé"
+            badgeColor: "Couleur associée"
+            keywords: "Mots clés dese opérations à prendre en compte"
+    addTag:
+        modal:
+            title: "Ajouter un nouveau tag pour la catégorie :"
+            label:
+                label: "Libellé"

@@ -1,0 +1,93 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.header-nav{
+    @apply bg-white fixed w-full z-10 top-0 shadow;
+}
+
+.header-nav-top{
+    @apply w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0;
+}
+
+.header-nav-bottom{
+    @apply w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white z-20;
+}
+
+.brand-link{
+    @apply text-gray-900 text-base xl:text-xl no-underline hover:no-underline font-bold;
+}
+.brand-symbol{
+    @apply text-pink-600 pr-3;
+}
+
+.header-menu{
+    @apply lg:flex flex-1 items-center px-4 md:px-0;
+}
+
+.header-menu-item{
+    @apply mr-6 my-2 md:my-0;
+}
+
+.header-menu-item-a{
+    @apply block py-1 md:py-3 pl-1 align-middle no-underline text-gray-900 border-b-2 border-white text-gray-900 hover:border-pink-600 hover:text-pink-600;
+}
+
+.header-menu-item-a-active{
+    @apply text-pink-600 hover:text-gray-900 hover:border-gray-900;
+}
+
+.header-menu-item-text{
+    @apply pb-1 md:pb-0 text-sm;
+}
+
+.main{
+    margin:80px 10px 0 10px;
+
+}
+
+.page-title{
+    @apply font-bold text-4xl;
+}
+
+.row{
+    @apply flex flex-wrap;
+}
+
+.btn{
+    @apply focus:outline-none text-sm py-2.5 px-5 rounded-md border;
+}
+.btn-default{
+    @apply text-gray-600 border-gray-600 hover:bg-gray-50;
+}
+.btn-primary{
+    @apply text-green-600 border-green-600 hover:bg-green-50;
+}
+.btn-secondary{
+    @apply text-blue-600 border-blue-600 hover:bg-blue-50;
+}
+.btn-warning{
+    @apply text-yellow-400 border-yellow-400 hover:bg-yellow-100;
+}
+
+.btn-danger{
+    @apply text-red-600 border-red-600 hover:bg-red-50;
+}
+
+.table{
+    @apply w-full;
+}
+
+.table th{
+    @apply border-b-2 border-gray-200;
+}
+
+.striped tbody tr{
+    height: 3em;
+    line-height: 3em;
+    @apply even:bg-gray-200;
+}
+
+.striped tbody tr td{
+    @apply p-2;
+}

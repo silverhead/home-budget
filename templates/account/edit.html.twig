@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'account.edit.title'|trans }}{% endblock %}
+
+{% block body %}
+    {{ include('common/page_header.html.twig', {'route_return': 'account_index', 'title': 'account.edit.title'|trans}) }}
+    {{ include('account/_form.html.twig', {'button_label': 'app.common.save_button'|trans}) }}
+{% endblock %}

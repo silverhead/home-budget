@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col">
+            <div class="input-field">
+            {{ form_widget(form.label) }}
+            </div>
+        </div>
+        <div class="col">{{ form_widget(form.soldeInit) }}</div>
+    </div>
+    <div class="row mt-2">
+        <div class="col text-center">
+            <button class="form-control btn btn-outline-success">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+{{ form_end(form) }}

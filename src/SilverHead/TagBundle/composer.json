@@ -1,0 +1,14 @@
+{
+    "name": "SilverHead/TagBundle",
+    "description": "Simplify usage of tags input into Symfony project",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "nicolas pin",
+            "email": "pin.nicolas@free.fr"
+        }
+    ],
+    "require": {
+    }
+}

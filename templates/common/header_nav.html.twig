@@ -1,0 +1,28 @@
+<nav id="header" class="header-nav">
+    <div class="header-nav-top">
+        <div class="w-1/2 pl-2 md:pl-0">
+            <a class="brand-link" href="{{ path('home') }}">
+                <i class="fas fa-sun fa-2x brand-symbol"></i> <span>{{ 'header.brand'|trans }}</span>
+            </a>
+        </div>
+        <div class="header-nav-bottom" id="nav-content">
+            <ul class="list-reset header-menu">
+                <li class="header-menu-item">
+                    <a href="{{ path('home') }}" class="header-menu-item-a header-menu-item-a-active">
+                        <i class="fas fa-home fa-fw mr-3 header-menu-icon-active"></i><span class="header-menu-item-text">{{ 'menu.home'|trans }}</span>
+                    </a>
+                </li>
+                <li class="header-menu-item">
+                    <a href="{{ path('account_index') }}" class="header-menu-item-a">
+                        <i class="fas fa-coins fa-fw mr-3"></i><span class="header-menu-item-text">{{ 'menu.accounts'|trans }}</span>
+                    </a>
+                </li>
+                <li class="header-menu-item">
+                    <a href="{{ path('category_index') }}" class="header-menu-item-a">
+                        <i class="far fa-list-alt fa-fw mr-3"></i><span class="header-menu-item-text">{{ 'menu.categories'|trans }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

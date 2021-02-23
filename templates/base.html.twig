@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        {{ encore_entry_link_tags('app')}}
+        <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+    </head>
+    <body>
+    {{ include('common/header_nav.html.twig') }}
+    <div class="main">
+        {% block body %}{% endblock %}
+    </div>
+        {{ encore_entry_script_tags('app') }}
+        <script type="text/javascript" src="{{ asset('fontawesome/js/all.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/miniAjax.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jsExtension.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/base.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
