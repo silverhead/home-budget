@@ -31,6 +31,9 @@ account:
         seeTheEntries: "Voir les opérations de ce compte"
     edit:
         title: "Edition d'un compte"
+        label:
+            label: "Libellé"
+            init_amount: "Solde initial"
     new:
         title: "Nouveau compte"
 entry:
@@ -48,7 +51,10 @@ entry:
         noData: "Pas d'opérations pour ce compte"
         title_category: "Catégories"
         filter_button: "Filtrer"
-    import_button: "Importer"
+    import:
+        title: "Importation des opérations"
+        select_file_text: "Selectionner un fichier"
+        button: "Importer"
 
 category:
     list:

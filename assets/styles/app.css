@@ -43,7 +43,10 @@
 
 .main{
     margin:80px 10px 0 10px;
+}
 
+.page-sub-title{
+    @apply font-bold text-2xl;
 }
 
 .page-title{
@@ -54,8 +57,24 @@
     @apply flex flex-wrap;
 }
 
+.form-label{
+    @apply block;
+}
+
+.input-group{
+    @apply focus:outline-none text-sm py-2.5 px-5 rounded-md border text-gray-600 border-gray-600 w-full;
+    display: inline-block;
+}
+.form-input{
+    @apply focus:outline-none text-sm py-2.5 px-5 rounded-md border text-gray-600 border-gray-600 w-full;
+}
+
+.input-group .form-input{
+    @apply focus:outline-none border-0 py-0 px-0 w-11-12;
+}
+
 .btn{
-    @apply focus:outline-none text-sm py-2.5 px-5 rounded-md border;
+    @apply focus:outline-none text-sm py-2.5 px-5 m-0.5 rounded-md border;
 }
 .btn-default{
     @apply text-gray-600 border-gray-600 hover:bg-gray-50;
@@ -74,6 +93,11 @@
     @apply text-red-600 border-red-600 hover:bg-red-50;
 }
 
+.badge{
+    font-size: 0.8em;
+    @apply p-1.5 font-light;
+}
+
 .table{
     @apply w-full;
 }
@@ -82,12 +106,47 @@
     @apply border-b-2 border-gray-200;
 }
 
-.striped tbody tr{
+table.striped tbody tr{
     height: 3em;
-    line-height: 3em;
-    @apply even:bg-gray-200;
+    line-height: 1.5em;
+    @apply even:bg-gray-100;
 }
 
-.striped tbody tr td{
+table.striped tbody tr td{
     @apply p-2;
+}
+
+table.bordered td{
+    @apply border-l-2 border-r-2 border-gray-200;
+}
+
+table.bordered td:first-child{
+    @apply border-l-0;
+}
+
+table.bordered td:last-child{
+    @apply border-r-0;
+}
+
+.main p{
+    @apply m-1;
+}
+
+.modal{
+    @apply focus:outline-none rounded-2xl border-2 border-gray-200 shadow-2xl bg-white;
+    position: absolute;
+    margin: auto;
+    display: none;
+}
+.modal-header{
+    @apply p-3 text-center sm:text-left;
+}
+.modal-header h5{
+    @apply text-lg leading-6 font-medium text-gray-900;
+}
+.model-body{
+    @apply text-sm text-gray-500;
+}
+.modal-footer{
+    @apply bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse;
 }

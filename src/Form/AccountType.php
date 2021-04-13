@@ -17,7 +17,7 @@ class AccountType extends AbstractType
             ->add('soldeInit', MoneyType::class, [
                 'currency' => 'EUR',
                 'attr' => [
-                    'class' => 'right-align'
+                    'class' => 'text-right'
                 ]
             ])
         ;

@@ -3,24 +3,23 @@
 {% block title %}Importation des opérations{% endblock %}
 
 {% block body %}
-    {{ include('common/page_header.html.twig', {'route_return': 'account_index', 'title': 'Importation des opérations'}) }}
+    {{ include('common/page_header.html.twig', {'route_return': 'account_index', 'title': 'entry.import.title'|trans}) }}
     {{ form_start(form) }}
     {% include 'common/flashMessage/flashMessageBlock.html.twig' %}
-    <div class="row">
-        <div class="col col-6">
-            {{ form_widget(form.file) }}
-{#            <div class="file-field input-field">
-                <div class="btn">
-                    <span>Fichier</span>
-                    {{ form_widget(form) }}
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="form-control file-path validate" type="text">
-                </div>
-            </div>#}
+    <div class="row m-8">
+        <div class="w-12-12">
+            <div class="flex w-full items-center justify-center bg-grey-lighter">
+                <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-gray-500 rounded-lg shadow-lg tracking-wide uppercase border border-gray-500 cursor-pointer hover:bg-gray-50">
+                    <i class="fas fa-3x fa-upload"></i>
+                    <span class="mt-2 text-base leading-normal">{{ 'entry.import.select_file_text'|trans }}</span>
+                    <div style="visibility: hidden">
+                        {{ form_widget(form.file) }}
+                    </div>
+                </label>
+            </div>
         </div>
-        <div class="col col-6">
-            <button class="btn btn-outline-warning">{{ button_label|default('Importer') }}</button>
+        <div class="flex w-full items-center justify-center m-3">
+            <button class="btn btn-warning">{{ 'entry.import.button'|trans }}</button>
         </div>
     </div>
     {{ form_end(form) }}

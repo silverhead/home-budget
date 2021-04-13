@@ -1,13 +1,13 @@
 {{ form_start(form) }}
     <div class="row m-3">
-        <div class="col-auto">
+        <div class="w-3-12">
             {{ form_widget(form.dateStart) }}
         </div>
-        <div class="col-auto">
+        <div class="w-3-12">
             {{ form_widget(form.dateEnd) }}
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-outline-info">{{ 'entry.list.filter_button'|trans }}</button>
+        <div class="w-2-12">
+            <button type="submit" class="btn btn-secondary">{{ 'entry.list.filter_button'|trans }}</button>
         </div>
     </div>
 {{ form_end(form) }}

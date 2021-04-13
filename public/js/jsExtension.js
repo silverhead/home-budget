@@ -1,5 +1,5 @@
-jsExtension =  {
-    fadeout: function(elt, duration){
+class Fadeout {
+    constructor(elt, duration){
         if (typeof(duration) == 'undefined'){
             duration = 200;
         }
@@ -14,6 +14,12 @@ jsExtension =  {
                 clearInterval(fadeEffect);
             }
         }, duration);
+    }
+};
+
+jsExtension =  {
+    fadeout: function(elt, duration){
+        return new fadeout(lt, duration);
     },
     dragAndDrop: function(options){
         let defaults = {
@@ -217,6 +223,25 @@ jsExtension =  {
         // }
         xmlHttp.open(settings.method, settings.url);
         xmlHttp.send(settings.data);
-    }
+    },
+    Modal: class {
+        constructor(element) {
+            this.element = element;
 
+            // for get height and width
+            this.element.style.display = 'block';
+
+            this.element.style.top = '50%';
+            this.element.style.left = '50%';
+            this.element.style.marginTop = (-1*this.element.offsetHeight/2) + 'px';
+            this.element.style.marginLeft = (-1*this.element.offsetWidth/2) + 'px';
+            this.element.style.display = '';
+        }
+        hide() {
+            this.element.style.display = 'none';
+        }
+        show() {
+            this.element.style.display = 'block';
+        }
+    }
 }
