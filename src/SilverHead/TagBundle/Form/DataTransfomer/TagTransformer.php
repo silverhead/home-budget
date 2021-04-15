@@ -29,8 +29,8 @@ class TagTransformer implements DataTransformerInterface
 
         $newTags = array_diff($labels, $tags);
         foreach ($newTags as $newTag) {
-            $tag = $this->manager->getExistTagsForLabels();
-            $tag->setLabel($newTag);
+            $tag = $this->manager->getNewEntityTag();
+            $tag->setTagLabel($newTag);
 
             $tags[] = $tag;
         }

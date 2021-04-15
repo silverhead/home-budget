@@ -5,7 +5,7 @@
 {% block body %}
     {{ include('common/page_header.html.twig', {'route_return': 'category_index', 'title': 'category.add.title'|trans}) }}
     {{ form_start(form) }}
-    <div class="row">
+    <div class="row m-3">
         <div class="w-8-12">
             <div class="w-11-12">
             {{ form_row(form.label) }}
@@ -20,32 +20,32 @@
     <div class="row">
         <div class="w-full">
             {{ form_row(form.tags) }}
-            <div class="chips" id="tag_filter" data-autocomplete="{{ tags|join(',') }}"></div>
+{#            <div class="chips" id="tag_filter" data-autocomplete="{{ tags|join(',') }}"></div>#}
 
-            <div class="max-w-lg m-6">
-                <div class="relative">
-                    <input class="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter some tags">
-                    <div class="hidden">
-                        <div class="absolute z-40 left-0 mt-2 w-full">
-                            <div class="py-1 text-sm bg-white rounded shadow-lg border border-gray-300">
-                                <a class="block py-1 px-5 cursor-pointer hover:bg-indigo-600 hover:text-white">Add tag "<span class="font-semibold" x-text="textInput"></span>"</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- selections -->
-                    <div class="bg-blue-100 inline-flex items-center text-sm rounded mt-2 mr-1 overflow-hidden">
-                        <span class="ml-2 mr-1 leading-relaxed truncate max-w-xs px-1" x-text="tag">tag</span>
-                        <button class="w-6 h-8 inline-block align-middle text-gray-500 bg-blue-200 focus:outline-none">
-                            <svg class="w-6 h-6 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"/></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
+{#            <div class="max-w-lg m-6">#}
+{#                <div class="relative">#}
+{#                    <input class="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter some tags">#}
+{#                    <div class="hidden">#}
+{#                        <div class="absolute z-40 left-0 mt-2 w-full">#}
+{#                            <div class="py-1 text-sm bg-white rounded shadow-lg border border-gray-300">#}
+{#                                <a class="block py-1 px-5 cursor-pointer hover:bg-indigo-600 hover:text-white">Add tag "<span class="font-semibold" x-text="textInput"></span>"</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <!-- selections -->#}
+{#                    <div class="bg-blue-100 inline-flex items-center text-sm rounded mt-2 mr-1 overflow-hidden">#}
+{#                        <span class="ml-2 mr-1 leading-relaxed truncate max-w-xs px-1" x-text="tag">tag</span>#}
+{#                        <button class="w-6 h-8 inline-block align-middle text-gray-500 bg-blue-200 focus:outline-none">#}
+{#                            <svg class="w-6 h-6 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"/></svg>#}
+{#                        </button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
         </div>
     </div>
-<div class="row">
-    <div class="w-full">
-        <button class="form-control btn btn-primary">{{ button_label|default('Save') }}</button>
+<div class="row m-3">
+    <div class="w-full text-center">
+        <button class="form-control btn btn-primary">{{ 'app.common.save_button'|trans }}</button>
     </div>
 </div>
     {{ form_end(form) }}
@@ -54,46 +54,49 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        document.getElementById('category_tags').style = "display:none";
-        let chips = new Array();
-        let dataChips = document.getElementById('category_tags').value.split(',');
-        if (dataChips != ""){
-            for (let chip of dataChips){
-                chips.push({
-                    tag: chip
-                });
-            }
-        }
-
+        // document.getElementById('category_tags').style = "display:none";
+        // let chips = new Array();
+        // let dataChips = document.getElementById('category_tags').value.split(',');
+        // if (dataChips != ""){
+        //     for (let chip of dataChips){
+        //         chips.push({
+        //             tag: chip
+        //         });
+        //     }
+        // }
+        //
         let dataAutocomplete = [];
-        for (let tag of document.getElementById('tag_filter').getAttribute('data-autocomplete').split(',')){
-            dataAutocomplete[tag] = null;
+        for (let tag of document.getElementById('category_tags').value.split(',')){
+            dataAutocomplete.push(tag);
         }
 
-        var elems = document.querySelectorAll('.chips');//document.querySelectorAll('.chips');
-        let chipInstances = M.Chips.init(elems, {
-           data: chips,
-            autocompleteOptions: {
-                data: dataAutocomplete,
-                limit: Infinity,
-                minLength: 1
-            },
-           onChipAdd:function(){
-               if (this.chipsData != null){
-                   var fieldTag = document.getElementById('category_tags');
+        //var elems = document.querySelectorAll('.chips');//document.querySelectorAll('.chips');
+        let tagEntry = new tagsInput({selector: 'category_tags'});
+        tagEntry.addData(dataAutocomplete);
 
-                   fieldTag.value = "";
-                   for(let chip of this.chipsData){
-                       fieldTag.value += (fieldTag.value != ""?",":"");
-                       fieldTag.value += chip.tag;
-                   }
-               }
-            },
-            onChipSelect: function(elt, chip){
-               console.log(chip);
-                chip.contentEditable = true;
-            }
-        });
+        // let chipInstances = M.Chips.init(elems, {
+        //    data: chips,
+        //     autocompleteOptions: {
+        //         data: dataAutocomplete,
+        //         limit: Infinity,
+        //         minLength: 1
+        //     },
+        //    onChipAdd:function(){
+        //        if (this.chipsData != null){
+        //            var fieldTag = document.getElementById('category_tags');
+        //
+        //            fieldTag.value = "";
+        //            for(let chip of this.chipsData){
+        //                fieldTag.value += (fieldTag.value != ""?",":"");
+        //                fieldTag.value += chip.tag;
+        //            }
+        //        }
+        //     },
+        //     onChipSelect: function(elt, chip){
+        //        console.log(chip);
+        //         chip.contentEditable = true;
+        //     }
+        // });
 
     </script>
 {% endblock %}

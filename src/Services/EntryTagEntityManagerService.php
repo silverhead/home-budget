@@ -1,14 +1,11 @@
 <?php
 
-
 namespace App\Services;
-
 
 use App\Entity\EntryTag;
 use App\SilverHead\TagBundle\Services\TagEntityManagerForDataTransformerInterface;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
-use Zend\Code\Generator\DocBlock\Tag\TagInterface;
+use App\SilverHead\TagBundle\Entity\TagEntityInterface;
 
 class EntryTagEntityManagerService implements TagEntityManagerForDataTransformerInterface
 {
@@ -22,7 +19,7 @@ class EntryTagEntityManagerService implements TagEntityManagerForDataTransformer
         $this->entityManager = $entityManager;
     }
 
-    public function getNewEntityTag(): TagInterface
+    public function getNewEntityTag(): TagEntityInterface
     {
         return new EntryTag();
     }

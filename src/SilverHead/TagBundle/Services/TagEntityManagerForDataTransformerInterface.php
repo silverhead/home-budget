@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\SilverHead\TagBundle\Services;
 
-use Doctrine\Common\Collections\Collection;
-use Zend\Code\Generator\DocBlock\Tag\TagInterface;
+use App\SilverHead\TagBundle\Entity\TagEntityInterface;
 
 interface TagEntityManagerForDataTransformerInterface
 {
@@ -12,7 +10,7 @@ interface TagEntityManagerForDataTransformerInterface
      * Return the new instance of Tag entity
      * @return TagInterface
      */
-    public function getNewEntityTag(): TagInterface;
+    public function getNewEntityTag(): TagEntityInterface;
 
     /**
      * Return list of Tag entity corresponding of labels list

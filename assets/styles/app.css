@@ -73,6 +73,30 @@
     @apply focus:outline-none border-0 py-0 px-0 w-11-12;
 }
 
+.tags-input-wrapper{
+    @apply focus:outline-none text-sm py-2.5 px-5 rounded-md border text-gray-600 border-gray-600 w-full;
+}
+
+.tags-input-wrapper .tag{
+    @apply inline-block bg-gray-50 text-gray-600 rounded-md border p-1.5 m-1;
+    /*display: inline-block;*/
+    /*background-color: #fa0e7e;*/
+    /*color: white;*/
+    /*border-radius: 40px;*/
+    /*padding: 0px 3px 0px 7px;*/
+    /*margin-right: 5px;*/
+    /*margin-bottom:5px;*/
+}
+
+.tags-input-wrapper .tag a {
+    margin: 0 7px 3px;
+    display: inline-block;
+    cursor: pointer;
+}
+.tags-input-wrapper input{
+    @apply focus:outline-none text-sm py-2.5 px-5 rounded-md border text-gray-600 border-gray-600;
+}
+
 .btn{
     @apply focus:outline-none text-sm py-2.5 px-5 m-0.5 rounded-md border;
 }
