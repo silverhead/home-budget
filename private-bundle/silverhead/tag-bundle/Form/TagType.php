@@ -1,9 +1,9 @@
 <?php
 
-namespace App\SilverHead\Form;
+namespace SilverHead\Form;
 
-use App\SilverHead\Form\DataTransformer\TagTransformer;
-use App\SilverHead\TagBundle\Services\TagEntityManagerForDataTransformerInterface;
+use SilverHead\Form\DataTransformer\TagTransformer;
+use SilverHead\TagBundle\Service\TagEntityManagerForDataTransformerInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bridge\Doctrine\Form\DataTransformer\CollectionToArrayTransformer;

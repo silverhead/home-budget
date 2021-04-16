@@ -129,10 +129,19 @@
 .table th{
     @apply border-b-2 border-gray-200;
 }
+table tbody tr{
+    min-height: 3em;
+    line-height: 1.5em;
+}
+table.header-fixed {
+    position: relative;
+}
+table.header-fixed tr th{
+    position: sticky;
+    top:0;
+}
 
 table.striped tbody tr{
-    height: 3em;
-    line-height: 1.5em;
     @apply even:bg-gray-100;
 }
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\SilverHead\TagBundle\Entity;
+namespace SilverHead\TagBundle\Entity;
 
 /**
  * Interface TaggableInterface
- * @package App\SilverHead\TagBundle\Entity
+ * @package SilverHead\TagBundle\Entity
  *
  * Use TagTrait already property and methods for that
  */

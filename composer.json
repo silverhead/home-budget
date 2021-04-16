@@ -59,7 +59,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "SilverHead\\TagBundle\\": "private-bundle/silverhead/tag-bundle/"
         }
     },
     "autoload-dev": {

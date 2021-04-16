@@ -3,8 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Category;
-use App\Services\EntryTagEntityManagerService;
-use App\SilverHead\Form\TagType;
+use App\Service\EntryTagEntityManagerService;
+use SilverHead\Form\TagType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;

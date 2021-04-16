@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\SilverHead\TagBundle\Entity;
+namespace SilverHead\TagBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

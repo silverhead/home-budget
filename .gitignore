@@ -15,7 +15,6 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 /.env.test
-/.env
 /composer.lock
 
 ###> symfony/webpack-encore-bundle ###

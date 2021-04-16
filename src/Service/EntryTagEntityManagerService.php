@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Service;
 
 use App\Entity\EntryTag;
-use App\SilverHead\TagBundle\Services\TagEntityManagerForDataTransformerInterface;
+use SilverHead\TagBundle\Service\TagEntityManagerForDataTransformerInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use App\SilverHead\TagBundle\Entity\TagEntityInterface;
+use SilverHead\TagBundle\Entity\TagEntityInterface;
 
 class EntryTagEntityManagerService implements TagEntityManagerForDataTransformerInterface
 {

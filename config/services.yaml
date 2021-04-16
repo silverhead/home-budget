@@ -20,6 +20,12 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
+    SilverHead\TagBundle\:
+        resource: '../private-bundle/silverhead/tag-bundle/'
+        exclude:
+            - '../private-bundle/silverhead/tag-bundle/DependencyInjection/'
+            - '../private-bundle/silverhead/tag-bundle/Entity/'
+            - '../private-bundle/silverhead/tag-bundle/Tests/'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class

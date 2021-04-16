@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EntryTagRepository;
-use App\SilverHead\TagBundle\Entity\TagEntityInterface;
-use App\SilverHead\TagBundle\Entity\TagTrait;
+use SilverHead\TagBundle\Entity\TagEntityInterface;
+use SilverHead\TagBundle\Entity\TagTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

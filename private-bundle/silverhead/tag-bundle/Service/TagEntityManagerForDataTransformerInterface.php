@@ -1,8 +1,8 @@
 <?php
 
-namespace App\SilverHead\TagBundle\Services;
+namespace SilverHead\TagBundle\Service;
 
-use App\SilverHead\TagBundle\Entity\TagEntityInterface;
+use SilverHead\TagBundle\Entity\TagEntityInterface;
 
 interface TagEntityManagerForDataTransformerInterface
 {

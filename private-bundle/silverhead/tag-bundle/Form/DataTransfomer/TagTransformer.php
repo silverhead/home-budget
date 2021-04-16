@@ -1,8 +1,8 @@
 <?php
 
-namespace App\SilverHead\Form\DataTransformer;
+namespace SilverHead\Form\DataTransformer;
 
-use App\SilverHead\TagBundle\Services\TagEntityManagerForDataTransformerInterface;
+use SilverHead\TagBundle\Service\TagEntityManagerForDataTransformerInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 
 class TagTransformer implements DataTransformerInterface

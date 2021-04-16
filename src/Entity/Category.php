@@ -3,12 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
-use App\SilverHead\TagBundle\Entity\HasTagInterface;
-use App\SilverHead\TagBundle\Entity\TagEntityInterface;
+use SilverHead\TagBundle\Entity\HasTagInterface;
+use SilverHead\TagBundle\Entity\TagEntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Zend\Code\Generator\DocBlock\Tag\TagInterface;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)

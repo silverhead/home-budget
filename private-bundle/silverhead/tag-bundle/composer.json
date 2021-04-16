@@ -1,5 +1,5 @@
 {
-    "name": "SilverHead/TagBundle",
+    "name": "SilverHeadTagBundle",
     "description": "Simplify usage of tags input into Symfony project",
     "minimum-stability": "stable",
     "license": "proprietary",
