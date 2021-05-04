@@ -3,9 +3,13 @@
 {% block title %}{{ 'entry.list.title'|trans }}{% endblock %}
 
 {% block body %}
-    {{ include('common/page_header.html.twig', {'route_return': 'account_index', 'title': 'entry.list.title'|trans}) }}
-    <div class="row">
+       <div class="row">
         <div class="w-10-12 pr-1">
+            <div class="row">
+                <div class="w-12-12">
+                    {{ include('common/page_header.html.twig', {'route_return': 'account_index', 'title': 'entry.list.title'|trans}) }}
+                </div>
+            </div>
             <div class="row">
                 <div class="w-7-12">
                     <h2 class="p-4 page-sub-title text-center">{{ 'entry.list.periodTitle'|trans({'%dateStar%': dateStartOfPeriod|date('d/m/Y'), '%dateEnd%': dateEndOfPeriod|date('d/m/Y')}) }}</h2>
@@ -70,9 +74,9 @@
                 </div>
             </div>
         </div>
-        <div class="w-2-12">
+        <div class="w-2-12 bg-gray-50">
             <div style="position: fixed">
-                <h2 class="p-4">{{ 'entry.list.title_category'|trans }}</h2>
+                <h2 class="page-sub-title p-4">{{ 'entry.list.title_category'|trans }}</h2>
                 <p><a href="{{ path('entry_new') }}" class="btn btn-primary">{{ 'app.common.add_button'|trans }}</a></p>
                 <br>
                 <ul class="list-unstyled">

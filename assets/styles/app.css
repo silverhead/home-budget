@@ -66,7 +66,7 @@
     display: inline-block;
 }
 .form-input{
-    @apply focus:outline-none text-sm py-2.5 px-5 rounded-md border text-gray-600 border-gray-600 w-full;
+    @apply focus:outline-none text-sm py-1.5 px-2.5 rounded-md border text-gray-600 border-gray-600 w-full;
 }
 
 .input-group .form-input{
@@ -98,7 +98,7 @@
 }
 
 .btn{
-    @apply focus:outline-none text-sm py-2.5 px-5 m-0.5 rounded-md border;
+    @apply focus:outline-none text-sm py-1.5 px-2.5 m-0.5 rounded-md border;
 }
 .btn-default{
     @apply text-gray-600 border-gray-600 hover:bg-gray-50;
@@ -133,6 +133,11 @@ table tbody tr{
     min-height: 3em;
     line-height: 1.5em;
 }
+
+table tbody tr td{
+    @apply p-2;
+}
+
 table.header-fixed {
     position: relative;
 }
@@ -143,10 +148,6 @@ table.header-fixed tr th{
 
 table.striped tbody tr{
     @apply even:bg-gray-100;
-}
-
-table.striped tbody tr td{
-    @apply p-2;
 }
 
 table.bordered td{
@@ -174,6 +175,7 @@ table.bordered td:last-child{
 .modal-header{
     @apply p-3 text-center sm:text-left;
 }
+
 .modal-header h5{
     @apply text-lg leading-6 font-medium text-gray-900;
 }
