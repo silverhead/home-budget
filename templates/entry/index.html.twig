@@ -3,82 +3,79 @@
 {% block title %}{{ 'entry.list.title'|trans }}{% endblock %}
 
 {% block body %}
-       <div class="row">
-        <div class="w-10-12 pr-1">
-            <div class="row">
-                <div class="w-12-12">
-                    {{ include('common/page_header.html.twig', {'route_return': 'account_index', 'title': 'entry.list.title'|trans}) }}
-                </div>
+<div class="row">
+    <div class="w-12-12">
+    {{ include('common/page_header.html.twig', {'route_return': 'account_index', 'title': 'entry.list.title'|trans}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="w-9-12 pr-1">
+        <div class="row">
+            <div class="w-12-12">
+                <h2 class="p-4 page-sub-title text-center">{{ 'entry.list.periodTitle'|trans({'%dateStar%': dateStartOfPeriod|date('d/m/Y'), '%dateEnd%': dateEndOfPeriod|date('d/m/Y')}) }}</h2>
             </div>
-            <div class="row">
-                <div class="w-7-12">
-                    <h2 class="p-4 page-sub-title text-center">{{ 'entry.list.periodTitle'|trans({'%dateStar%': dateStartOfPeriod|date('d/m/Y'), '%dateEnd%': dateEndOfPeriod|date('d/m/Y')}) }}</h2>
-                </div>
-                <div class="w-3-12 total-table">
-                    <dl class="row fs-7">
-                        <dt class="w-7-12">{{ 'entry.list.totalCreditOfPeriod'|trans }}</dt>
-                        <dd class="w-5-12 text-right">{{ creditSum|number_format(2, ",", " ") }} &euro;</dd>
-                        <dt class="w-7-12">{{ 'entry.list.totalDebitOfPeriod'|trans }}</dt>
-                        <dd class="w-5-12 text-right">{{ debitSum|number_format(2, ",", " ") }} &euro;</dd>
-                        <dt class="w-7-12">{{ 'entry.list.totalDiffPeriod'|trans }}</dt>
-                        <dd class="w-5-12 text-right">{{ (creditSum+debitSum)|number_format(2, ",", " ") }} &euro;</dd>
-                        <dt class="w-7-12">{{ 'entry.list.soldEndOfPeriod'|trans }}</dt>
-                        <dd class="w-5-12 text-right">{{ soldTotalPeriod|number_format(2, ",", " ") }} &euro;</dd>
-                    </dl>
-                </div>
-                <div class="w-2-12 p-4">
-                    <a href="{{ path('entry_import_download', {'accountId': account.id}) }}" class="btn btn-warning">{{ 'entry.import.button'|trans }}</a>
-                </div>
-            </div>
-            {{ include('entry/form_search.html.twig', {'form': form}) }}
-            <div class="row">
-                <div class="w-12-12">
-                    <table class="table striped bordered table-hover  header-fixed">
-                        <thead>
+        </div>
+        {{ include('entry/form_search.html.twig', {'form': form}) }}
+        <div class="row">
+            <div class="w-12-12">
+                <table class="table striped bordered table-hover  header-fixed">
+                    <thead>
                         <tr>
                             <th class="text-center">{{ 'entry.list.label'|trans }}</th>
                             <th class="text-center">{{ 'entry.list.debit'|trans }}</th>
                             <th class="text-center">{{ 'entry.list.credit'|trans }}</th>
                             <th class="text-center">{{ 'entry.list.date'|trans }}</th>
                         </tr>
-                        </thead>
-                        <tbody>
-                        {% for entry in entries %}
-                            <tr class="entry">
-                                <td  class="text-left" {%if entry.description!=""%}class="tooltipped" data-position="top" data-tooltip="{{  entry.description }}"{% endif %}>
-                                    <figure>
-                                        <blockquote class="blockquote">
-                                            <p><span class="handle"><i class="fas fa-grip-horizontal"></i></span>&nbsp;<span class="label">{{ entry.label }}</span></p>
-                                        </blockquote>
-                                        <figcaption class="blockquote-footer flex justify-between">
-                                            <p class="justify-items-start">{{ entry.operationNumber }}</p>
-                                            <ul class="list-unstyled justify-items-end flex flex-row">
-                                                {% for category in entry.categories %}
-                                                    <li class="rounded-3xl mr-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ category.label }}" style="width:15px;height:15px;background-color: {{ category.badgeColor }}"></li>
-                                                {% endfor %}
-                                            </ul>
-                                        </figcaption>
-                                    </figure>
-                                </td>
-                                <td class="text-right">{% if entry.debit < 0 %}{{ entry.debit|number_format(2, ",", " ") }} &euro;{% endif %}</td>
-                                <td class="text-right">{% if entry.credit > 0 %}{{ entry.credit|number_format(2, ",", " ") }} &euro;{% endif %}</td>
-                                <td class="text-center">{{ entry.date ? entry.date|date('d/m/Y') : '' }}</td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="7">{{ 'entry.list.noData'|trans }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                    </thead>
+                    <tbody>
+                    {% for entry in entries %}
+                        <tr class="entry">
+                            <td  class="text-left" {%if entry.description!=""%}class="tooltipped" data-position="top" data-tooltip="{{  entry.description }}"{% endif %}>
+                                <figure>
+                                    <blockquote class="blockquote">
+                                        <p><span class="handle"><i class="fas fa-grip-horizontal"></i></span>&nbsp;<span class="label">{{ entry.label }}</span></p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer flex justify-between">
+                                        <p class="justify-items-start">{{ entry.operationNumber }}</p>
+                                        <ul class="list-unstyled justify-items-end flex flex-row">
+                                            {% for category in entry.categories %}
+                                                <li class="rounded-3xl mr-1" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ category.label }}" style="width:15px;height:15px;background-color: {{ category.badgeColor }}"></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </figcaption>
+                                </figure>
+                            </td>
+                            <td class="text-right">{% if entry.debit < 0 %}{{ entry.debit|number_format(2, ",", " ") }} &euro;{% endif %}</td>
+                            <td class="text-right">{% if entry.credit > 0 %}{{ entry.credit|number_format(2, ",", " ") }} &euro;{% endif %}</td>
+                            <td class="text-center">{{ entry.date ? entry.date|date('d/m/Y') : '' }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">{{ 'entry.list.noData'|trans }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="w-2-12 bg-gray-50">
-            <div style="position: fixed">
-                <h2 class="page-sub-title p-4">{{ 'entry.list.title_category'|trans }}</h2>
-                <p><a href="{{ path('entry_new') }}" class="btn btn-primary">{{ 'app.common.add_button'|trans }}</a></p>
-                <br>
+    </div>
+    <div class="w-3-12">
+        <div style="position: fixed">
+            <h2 class="page-sub-title p-4">{{ 'entry.list.title_total'|trans }}                 <a href="{{ path('entry_import_download', {'accountId': account.id}) }}" class="btn btn-warning float-right">{{ 'entry.import.button'|trans }}</a></h2>
+            <div class="side-block">
+                <dl class="row fs-7">
+                    <dt class="w-7-12">{{ 'entry.list.totalCreditOfPeriod'|trans }}</dt>
+                    <dd class="w-5-12 text-right">{{ creditSum|number_format(2, ",", " ") }} &euro;</dd>
+                    <dt class="w-7-12">{{ 'entry.list.totalDebitOfPeriod'|trans }}</dt>
+                    <dd class="w-5-12 text-right">{{ debitSum|number_format(2, ",", " ") }} &euro;</dd>
+                    <dt class="w-7-12">{{ 'entry.list.totalDiffPeriod'|trans }}</dt>
+                    <dd class="w-5-12 text-right">{{ (creditSum+debitSum)|number_format(2, ",", " ") }} &euro;</dd>
+                    <dt class="w-7-12">{{ 'entry.list.soldEndOfPeriod'|trans }}</dt>
+                    <dd class="w-5-12 text-right">{{ soldTotalPeriod|number_format(2, ",", " ") }} &euro;</dd>
+                </dl>
+            </div>
+            <h2 class="page-sub-title p-4">{{ 'entry.list.title_category'|trans }} <a href="{{ path('entry_new') }}" class="btn btn-primary float-right">{{ 'app.common.add_button'|trans }}</a></h2>
+            <div class="side-block">
                 <ul class="list-unstyled">
                     {% for category in categories %}
                         <li class="fs-6 p-1 droppable" id="category_{{ category.id }}" data-id="{{ category.id }}"><span class="label">{{ category.label }}</span><br/><span class="badge rounded" style="background-color: {{ category.badgeColor }}">{{ category.getAmount()|number_format(2, ",", " ") }} €</span></li>
@@ -87,31 +84,32 @@
             </div>
         </div>
     </div>
-    <!-- Modal Structure -->
-    <div id="addTagModal" class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{ 'category.addTag.modal.title'|trans }} <span id="category_label"></span></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" id="urlAddEntryTag" name="urlAddEntryTag" value="{{ path('category_add_entry_tag') }}">
-                    <input type="hidden" id="category_id" name="category_id" value="">
-                    <p>
-                        <label class="label-control w-3-12">{{ 'category.addTag.modal.label.label'|trans }}</label>
-                        <input class="form-control w-9-12" type="text" id="tag_label" name="tag_label" value="">
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="cancelAddEntryTag" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'app.common.cancel_button'|trans }}</button>
-                    <button type="button" id="saveAddEntryTag" class=" btn btn-primary">{{ 'app.common.add_button'|trans }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
+<!-- Modal Structure -->
+<div id="addTagModal" class="modal" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">{{ 'category.addTag.modal.title'|trans }} <span id="category_label"></span></h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+<input type="hidden" id="urlAddEntryTag" name="urlAddEntryTag" value="{{ path('category_add_entry_tag') }}">
+<input type="hidden" id="category_id" name="category_id" value="">
+<p>
+<label class="label-control w-3-12">{{ 'category.addTag.modal.label.label'|trans }}</label>
+<input class="form-control w-9-12" type="text" id="tag_label" name="tag_label" value="">
+</p>
+</div>
+<div class="modal-footer">
+<button type="button" id="cancelAddEntryTag" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'app.common.cancel_button'|trans }}</button>
+<button type="button" id="saveAddEntryTag" class=" btn btn-primary">{{ 'app.common.add_button'|trans }}</button>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}
 {% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset('js/entry/list..js') }}"></script>
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('js/entry/list..js') }}"></script>
 {% endblock %}

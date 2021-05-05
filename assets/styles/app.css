@@ -45,6 +45,10 @@
     margin:80px 10px 0 10px;
 }
 
+.side-block{
+    @apply bg-gray-100 m-1 p-1;
+}
+
 .page-sub-title{
     @apply font-bold text-2xl;
 }

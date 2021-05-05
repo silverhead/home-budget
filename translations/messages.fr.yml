@@ -50,6 +50,7 @@ entry:
         date: "Date"
         noData: "Pas d'opérations pour ce compte"
         title_category: "Catégories"
+        title_total: "Totaux"
         filter_button: "Filtrer"
     import:
         title: "Importation des opérations"
