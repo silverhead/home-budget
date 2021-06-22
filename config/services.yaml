@@ -26,6 +26,13 @@ services:
             - '../private-bundle/silverhead/tag-bundle/DependencyInjection/'
             - '../private-bundle/silverhead/tag-bundle/Entity/'
             - '../private-bundle/silverhead/tag-bundle/Tests/'
+    Silverhead\PageCallback\:
+        resource: '../vendor/silverhead/page-callback/src/*'
+        exclude:
+            - '../vendor/silverhead/page-callback/src/entity'
+            - '../vendor/silverhead/page-callback/src/adapter'
+        arguments:
+            - '@App\Adapter\StorageSessionPageCallbackAdapter'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class

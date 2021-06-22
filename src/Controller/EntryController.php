@@ -11,6 +11,7 @@ use App\Form\Model\ImportEntry;
 use App\Repository\AccountRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\EntryRepository;
+use Silverhead\PageCallback\PageCallbackHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +28,7 @@ class EntryController extends AbstractController
     /**
      * @Route("/list/{accountId}", name="entry_index", methods={"GET", "POST"})
      */
-    public function index(Request $request, EntryRepository $entryRepository, AccountRepository $accountRepository, CategoryRepository $categoryRepository, SessionInterface $session, $accountId): Response
+    public function index(Request $request, EntryRepository $entryRepository, AccountRepository $accountRepository, CategoryRepository $categoryRepository, SessionInterface $session, $accountId, PageCallbackHandler $pageCallbackHandler): Response
     {
         $dateNow = new \DateTime();
         $entrySearch = new EntryListSearch();
@@ -69,6 +70,8 @@ class EntryController extends AbstractController
 
         $totalPeriod = $entryRepository->getSoldTotalEndPeriod($accountId, $entrySearch->getDateEnd());
 
+        $callingPageCallback = $pageCallbackHandler->getPageCallback('entry_index');
+
         return $this->render('entry/index.html.twig', [
             'entries' => $entries,
             'debitSum' => array_sum(array_map(function($entry){ return $entry->getDebit(); }, $entries)),
@@ -78,7 +81,8 @@ class EntryController extends AbstractController
             'account' => $account,
             'categories' => $categories,
             'soldTotalPeriod' => $account->getSoldeInit()+$totalPeriod,
-            'form' => $formSearch->createView()
+            'form' => $formSearch->createView(),
+            'returnBtnUrl' => $callingPageCallback->getFormatedUrl()
         ]);
     }
 

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Account;
 use App\Form\AccountType;
 use App\Repository\AccountRepository;
+use Silverhead\PageCallback\PageCallbackHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,8 +19,10 @@ class AccountController extends AbstractController
     /**
      * @Route("/", name="account_index", methods={"GET"})
      */
-    public function index(AccountRepository $accountRepository): Response
+    public function index(AccountRepository $accountRepository, PageCallbackHandler $pageCallbackHandler): Response
     {
+        $pageCallbackHandler->setPageCallback('entry_index', $this->generateUrl('account_index'));
+
         return $this->render('account/index.html.twig', [
             'accounts' => $accountRepository->findAll(),
         ]);

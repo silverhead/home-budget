@@ -4,20 +4,16 @@
 
 {% block body %}
 <div class="row">
-    <div class="w-12-12">
-    {{ include('common/page_header.html.twig', {'route_return': 'account_index', 'title': 'entry.list.title'|trans}) }}
-    </div>
-</div>
-<div class="row">
     <div class="w-9-12 pr-1">
         <div class="row">
             <div class="w-12-12">
-                <h2 class="p-4 page-sub-title text-center">{{ 'entry.list.periodTitle'|trans({'%dateStar%': dateStartOfPeriod|date('d/m/Y'), '%dateEnd%': dateEndOfPeriod|date('d/m/Y')}) }}</h2>
+                {{ include('common/page_header.html.twig', {'url_return': returnBtnUrl, 'title': 'entry.list.title'|trans}) }}
+                <h2 class="p-4 sub-title text-center">{{ 'entry.list.periodTitle'|trans({'%dateStar%': dateStartOfPeriod|date('d/m/Y'), '%dateEnd%': dateEndOfPeriod|date('d/m/Y')}) }}</h2>
             </div>
         </div>
         {{ include('entry/form_search.html.twig', {'form': form}) }}
         <div class="row">
-            <div class="w-12-12">
+            <div class="w-12-12" style="height: 60vh;overflow: auto;">
                 <table class="table striped bordered table-hover  header-fixed">
                     <thead>
                         <tr>
@@ -59,29 +55,25 @@
             </div>
         </div>
     </div>
-    <div class="w-3-12">
-        <div style="position: fixed">
-            <h2 class="page-sub-title p-4">{{ 'entry.list.title_total'|trans }}                 <a href="{{ path('entry_import_download', {'accountId': account.id}) }}" class="btn btn-warning float-right">{{ 'entry.import.button'|trans }}</a></h2>
-            <div class="side-block">
-                <dl class="row fs-7">
-                    <dt class="w-7-12">{{ 'entry.list.totalCreditOfPeriod'|trans }}</dt>
-                    <dd class="w-5-12 text-right">{{ creditSum|number_format(2, ",", " ") }} &euro;</dd>
-                    <dt class="w-7-12">{{ 'entry.list.totalDebitOfPeriod'|trans }}</dt>
-                    <dd class="w-5-12 text-right">{{ debitSum|number_format(2, ",", " ") }} &euro;</dd>
-                    <dt class="w-7-12">{{ 'entry.list.totalDiffPeriod'|trans }}</dt>
-                    <dd class="w-5-12 text-right">{{ (creditSum+debitSum)|number_format(2, ",", " ") }} &euro;</dd>
-                    <dt class="w-7-12">{{ 'entry.list.soldEndOfPeriod'|trans }}</dt>
-                    <dd class="w-5-12 text-right">{{ soldTotalPeriod|number_format(2, ",", " ") }} &euro;</dd>
-                </dl>
-            </div>
-            <h2 class="page-sub-title p-4">{{ 'entry.list.title_category'|trans }} <a href="{{ path('entry_new') }}" class="btn btn-primary float-right">{{ 'app.common.add_button'|trans }}</a></h2>
-            <div class="side-block">
-                <ul class="list-unstyled">
-                    {% for category in categories %}
-                        <li class="fs-6 p-1 droppable" id="category_{{ category.id }}" data-id="{{ category.id }}"><span class="label">{{ category.label }}</span><br/><span class="badge rounded" style="background-color: {{ category.badgeColor }}">{{ category.getAmount()|number_format(2, ",", " ") }} €</span></li>
-                    {% endfor %}
-                </ul>
-            </div>
+    <div class="w-3-12 side-block">
+        <div style="">
+            <h2 class="sub-title p-4">{{ 'entry.list.title_total'|trans }}<a href="{{ path('entry_import_download', {'accountId': account.id}) }}" class="btn btn-warning float-right">{{ 'entry.import.button'|trans }}</a></h2>
+            <dl class="row fs-7">
+                <dt class="w-7-12">{{ 'entry.list.totalCreditOfPeriod'|trans }}</dt>
+                <dd class="w-5-12 text-right">{{ creditSum|number_format(2, ",", " ") }} &euro;</dd>
+                <dt class="w-7-12">{{ 'entry.list.totalDebitOfPeriod'|trans }}</dt>
+                <dd class="w-5-12 text-right">{{ debitSum|number_format(2, ",", " ") }} &euro;</dd>
+                <dt class="w-7-12">{{ 'entry.list.totalDiffPeriod'|trans }}</dt>
+                <dd class="w-5-12 text-right">{{ (creditSum+debitSum)|number_format(2, ",", " ") }} &euro;</dd>
+                <dt class="w-7-12">{{ 'entry.list.soldEndOfPeriod'|trans }}</dt>
+                <dd class="w-5-12 text-right">{{ soldTotalPeriod|number_format(2, ",", " ") }} &euro;</dd>
+            </dl>
+            <h2 class="sub-title p-4">{{ 'entry.list.title_category'|trans }} <a href="{{ path('entry_new') }}" class="btn btn-primary float-right">{{ 'app.common.add_button'|trans }}</a></h2>
+            <ul class="list-unstyled">
+                {% for category in categories %}
+                    <li class="fs-6 p-1 flex justify-between droppable" id="category_{{ category.id }}" data-id="{{ category.id }}"><span class="label">{{ category.label }}</span><br/><span class="badge rounded fl" style="background-color: {{ category.badgeColor }}">{{ category.getAmount()|number_format(2, ",", " ") }} €</span></li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>

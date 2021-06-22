@@ -1,4 +1,5 @@
+{% if route_return is defined %}{% set returnBtnUrl = path(route_return) %}{% endif %}
 <header class="row m-3">
-    <div class="w-3-12"><a href="{{ path(route_return) }}" class="float-left btn btn-default">{{ 'app.common.return_button'|trans }}</a></div>
+    <div class="w-3-12"><a href="{{ returnBtnUrl }}" class="float-left btn btn-default">{{ 'app.common.return_button'|trans }}</a></div>
     <div class="w-9-12 page-title"><h1>{{title}}</h1></div>
  </header>
