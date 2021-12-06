@@ -61,9 +61,14 @@ class Entry
     private Periodicity $periodicity;
 
     /**
-     * @var array
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="entries", cascade={"persist"})
      */
-    private array $categories = array();
+    private Collection $categories;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -178,9 +183,9 @@ class Entry
     }
 
     /**
-     * @return array
+     * @return Collection
      */
-    public function getCategories(): array
+    public function getCategories(): Collection
     {
         return $this->categories;
     }
@@ -191,10 +196,10 @@ class Entry
      */
     public function addCategory(Category $category): Entry
     {
-        $this->categories[] = $category;
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
 
         return $this;
     }
-
-
 }
