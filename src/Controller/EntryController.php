@@ -54,11 +54,19 @@ class EntryController extends AbstractController
 
         $categories = $categoryRepository->findBy(['account' => $account], ['label' => 'ASC']);
 
+        $criteria = [];
+        if ($entrySearch->getLabel() !== null || $entrySearch->getLabel() !== ""){
+            $criteria = [
+                'label' => $entrySearch->getLabel()
+            ];
+        }
+
         $entries = $entryRepository->getByPeriodAndAccount(
             $accountId,
             $entrySearch->getDateStart(),
             $entrySearch->getDateEnd(),
-            ['e.date' => 'desc']
+            ['e.date' => 'desc'],
+            $criteria
         );
 
         foreach ($entries as $entry) {

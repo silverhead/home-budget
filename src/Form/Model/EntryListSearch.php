@@ -15,6 +15,11 @@ class EntryListSearch
     private $dateEnd = null;
 
     /**
+     * @var string
+     */
+    private $label = null;
+
+    /**
      * @return \DateTime
      */
     public function getDateStart(): \DateTime
@@ -49,6 +54,24 @@ class EntryListSearch
     {
         $this->dateEnd = $dateEnd;
 
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    /**
+     * @param string $label
+     * @return EntryListSearch
+     */
+    public function setLabel(?string $label): EntryListSearch
+    {
+        $this->label = $label;
         return $this;
     }
 }

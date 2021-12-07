@@ -19,7 +19,7 @@ class EntryRepository extends ServiceEntityRepository
         parent::__construct($registry, Entry::class);
     }
 
-    public function getByPeriodAndAccount(int $accountId, \Datetime $dateStart, \Datetime $dateEnd, array $orders = array())
+    public function getByPeriodAndAccount(int $accountId, \Datetime $dateStart, \Datetime $dateEnd, array $orders = array(),array $otherCriteria = array())
     {
         $from = new \DateTime($dateStart->format("Y-m-d")." 00:00:00");
         $to   = new \DateTime($dateEnd->format("Y-m-d")." 23:59:59");
@@ -32,6 +32,11 @@ class EntryRepository extends ServiceEntityRepository
                 ->setParameter('from', $from )
                 ->setParameter('to', $to)
         ;
+        foreach ($otherCriteria as $property => $otherCriterion) {
+            $qb
+                ->andWhere('e.'.$property.' LIKE :'.$property)
+                ->setParameter($property, "%".$otherCriterion."%");
+        }
 
         if (count($orders) > 0){
             foreach ($orders as $orderKey => $orderValue) {
