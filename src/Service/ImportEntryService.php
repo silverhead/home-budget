@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class ImportEntryService extends ImportCsvServiceAbstract
 {
     /**
-     * @var Array
+     * @var array
      */
     private $entriesList = array();
 
@@ -22,9 +22,13 @@ class ImportEntryService extends ImportCsvServiceAbstract
      */
     private EntityManagerInterface $entityManager;
 
+    private $categories;
+
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
+
+        $this->categories = $this->entityManager->getRepository('App:Category')->findAll();
     }
 
     public function setAccount(Account $account)
@@ -55,6 +59,12 @@ class ImportEntryService extends ImportCsvServiceAbstract
             ->setCredit(floatval(str_replace(",",".",$dataLine[4])))
             ->setDescription($dataLine[5])
             ;
+
+        foreach ($this->categories as $category) {
+            if ($category->checkEntryForCategory($entry)){
+                $entry->addCategory($category);
+            }
+        }
 
         $this->entriesList[$numLine] = $entry;
     }

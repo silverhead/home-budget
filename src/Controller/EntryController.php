@@ -71,7 +71,9 @@ class EntryController extends AbstractController
 
         foreach ($entries as $entry) {
             foreach ($categories as $category) {
-                $category->addAmountByTag($entry);
+                if ($entry->getCategories()->contains($category)){
+                    $category->addAmountByEntry($entry);
+                }
             }
         }
 

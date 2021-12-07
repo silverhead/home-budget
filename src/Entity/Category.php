@@ -38,6 +38,11 @@ class Category implements HasTagInterface
     private Collection $tags;
 
     /**
+     * @ORM\ManyToMany(targetEntity=Entry::class, inversedBy="categories")
+     */
+    private Collection $entries;
+
+    /**
      * @var float
      */
     private float $amount = 0;
@@ -51,6 +56,7 @@ class Category implements HasTagInterface
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->entries = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,17 +120,45 @@ class Category implements HasTagInterface
         return $this;
     }
 
-    public function addAmountByTag(Entry $entry): self
+    /**
+     * @return Collection|entries[]
+     */
+    public function getEntries(): Collection
     {
-        foreach ($this->tags as $tag) {
-            if (false !== strpos(strtoupper($entry->getLabel()), strtoupper($tag->getTagLabel()))){
-                $entry->addCategory($this);
-                $this->amount += ($entry->getDebit()+$entry->getCredit());
-                return $this;
-            }
+        return $this->entries;
+    }
+
+    public function addEntry(Entry $entry): self
+    {
+        if (!$this->entries->contains($entry)) {
+            $this->entries[] = $entry;
         }
 
         return $this;
+    }
+
+    public function removeEntry(Entry $entry): self
+    {
+        $this->entries->removeElement($entry);
+
+        return $this;
+    }
+
+    public function addAmountByEntry(Entry $entry): self
+    {
+        $this->amount += ($entry->getDebit()+$entry->getCredit());
+        return $this;
+    }
+
+    public function checkEntryForCategory(Entry $entry): bool
+    {
+        foreach ($this->tags as $tag) {
+            if (false !== strpos(strtoupper($entry->getLabel()), strtoupper($tag->getTagLabel()))){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
